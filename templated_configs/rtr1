@@ -1,0 +1,18 @@
+interface Ethernet2
+    no switchport
+    ip ospf network point-to-point
+    ip ospf area 0.0.0.0
+    ip address 172.16.200.1/30
+interface Ethernet3
+    no switchport
+    ip ospf network point-to-point
+    ip ospf area 0.0.0.0
+    ip address 172.16.200.5/30
+interface Loopback1
+    ip address 172.16.0.1/32
+!
+ip routing
+!
+router ospf 1
+    router-id 172.16.0.1
+network 172.16.0.1/32 area 0.0.0.0

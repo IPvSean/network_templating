@@ -1,0 +1,17 @@
+---
+- hosts: cisco
+  gather_facts: no
+  tasks:
+    # - name: replace config with flat file
+    #   nxos_config:
+    #     src: simple_config.j2
+    - name: replace config with flat file
+      template:
+        src: simple_config.j2
+        dest: "./templated_configs/{{inventory_hostname}}"
+      delegate_to: localhost
+
+    # - name: replace config with flat file
+    #   nxos_config:
+    #     src: "templated_configs/{{inventory_hostname}}"
+    #   tags: loadit
